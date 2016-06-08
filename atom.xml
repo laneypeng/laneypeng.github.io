@@ -1,44 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Peng Li&#39;s Blog</title>
-  <subtitle>Bigdata</subtitle>
+  <title>拾光</title>
+  <subtitle>拾光&amp;勿忘</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-21T07:44:23.935Z</updated>
+  <updated>2016-06-08T09:42:23.974Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
-    <name>Peng Li</name>
+    <name>PengLi</name>
     <email>pengli0606@gmail.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/04/21/hello-world/"/>
-    <id>http://yoursite.com/2016/04/21/hello-world/</id>
-    <published>2016-04-21T07:44:23.927Z</published>
-    <updated>2016-04-21T07:44:23.935Z</updated>
+    <title>SparkSQL转CSV为parquet文件</title>
+    <link href="http://yoursite.com/2016/06/08/SparkSQL%E5%B0%86CSV%E8%BD%AC%E4%B8%BAparquet%E6%96%87%E4%BB%B6/"/>
+    <id>http://yoursite.com/2016/06/08/SparkSQL将CSV转为parquet文件/</id>
+    <published>2016-06-08T03:39:36.000Z</published>
+    <updated>2016-06-08T09:42:23.974Z</updated>
     
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Spark" scheme="http://yoursite.com/categories/Spark/"/>
+    
+    
+      <category term="spark" scheme="http://yoursite.com/tags/spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spark架构基础</title>
+    <link href="http://yoursite.com/2016/06/08/Spark%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
+    <id>http://yoursite.com/2016/06/08/Spark基础架构/</id>
+    <published>2016-06-08T03:37:43.000Z</published>
+    <updated>2016-06-08T09:42:17.127Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Spark" scheme="http://yoursite.com/categories/Spark/"/>
+    
+    
+      <category term="spark" scheme="http://yoursite.com/tags/spark/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm可靠性与容错机制</title>
+    <link href="http://yoursite.com/2016/06/08/Storm%E7%9A%84%E5%8F%AF%E9%9D%A0%E5%AE%B9%E9%94%99%E6%9C%BA%E5%88%B6/"/>
+    <id>http://yoursite.com/2016/06/08/Storm的可靠容错机制/</id>
+    <published>2016-06-08T02:55:14.000Z</published>
+    <updated>2016-06-08T02:58:57.528Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Storm" scheme="http://yoursite.com/categories/Storm/"/>
+    
+    
+      <category term="storm" scheme="http://yoursite.com/tags/storm/"/>
+    
+      <category term="流式处理" scheme="http://yoursite.com/tags/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="可靠性" scheme="http://yoursite.com/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Storm架构基础</title>
+    <link href="http://yoursite.com/2016/06/08/Storm%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
+    <id>http://yoursite.com/2016/06/08/Storm基础架构/</id>
+    <published>2016-06-08T02:54:47.000Z</published>
+    <updated>2016-06-08T02:59:50.615Z</updated>
+    
+    <content type="html"></content>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Storm" scheme="http://yoursite.com/categories/Storm/"/>
+    
+    
+      <category term="storm" scheme="http://yoursite.com/tags/storm/"/>
+    
+      <category term="流式处理" scheme="http://yoursite.com/tags/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86/"/>
+    
+      <category term="架构" scheme="http://yoursite.com/tags/%E6%9E%B6%E6%9E%84/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kafka命令行使用</title>
+    <link href="http://yoursite.com/2016/06/08/Kafka%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/06/08/Kafka命令行使用/</id>
+    <published>2016-06-08T01:49:20.000Z</published>
+    <updated>2016-06-08T09:42:38.008Z</updated>
+    
+    <content type="html">&lt;h3 id=&quot;创建Topic&quot;&gt;&lt;a href=&quot;#创建Topic&quot; class=&quot;headerlink&quot; title=&quot;创建Topic&quot;&gt;&lt;/a&gt;创建Topic&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/kafka-topics.sh --create --topic &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; --replication-factor 1 --partitions 4 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --zookeeper dpnode03:2181,dpnode04:2181,dpnode05:2181&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里创建了一个test消息队列，副本为2，分区为4。&lt;/p&gt;
+&lt;h3 id=&quot;查看Topic属性&quot;&gt;&lt;a href=&quot;#查看Topic属性&quot; class=&quot;headerlink&quot; title=&quot;查看Topic属性&quot;&gt;&lt;/a&gt;查看Topic属性&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/kafka-topics.sh --zookeeper dpnode03:2181,dpnode04,dpnode05 --describe --topic &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;&lt;img src=&quot;/img/kafka-topic-describe.jpg&quot; alt=&quot;&quot;&gt;&lt;br&gt;Topic：消息名称&lt;br&gt;Partition：分区号。下标从0开始。&lt;br&gt;Leader：所在分区的broker编号，负责处理消息的读写。leader是从所有节点中随机选择的。&lt;br&gt;Replicas：列出了所有的副本节点，不管节点是否在服务中。&lt;br&gt;Isr：正在服务中的节点。&lt;/p&gt;
+&lt;h3 id=&quot;发送消息&quot;&gt;&lt;a href=&quot;#发送消息&quot; class=&quot;headerlink&quot; title=&quot;发送消息&quot;&gt;&lt;/a&gt;发送消息&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/kafka-console-producer.sh --broker-list dpnode05:6667 --topic &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;This is the first message&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;输入一行内容按回车&lt;/p&gt;
+&lt;h3 id=&quot;消费消息&quot;&gt;&lt;a href=&quot;#消费消息&quot; class=&quot;headerlink&quot; title=&quot;消费消息&quot;&gt;&lt;/a&gt;消费消息&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/kafka-console-consumer.sh --zookeeper dpnode03,dpnode04,dpnode05:2181 --topic &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --from-beginning&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;列举所有Topic&quot;&gt;&lt;a href=&quot;#列举所有Topic&quot; class=&quot;headerlink&quot; title=&quot;列举所有Topic&quot;&gt;&lt;/a&gt;列举所有Topic&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/kafka-topics.sh --zookeeper dpnode03:2181,dpnode04:2181,dpnode05 --list&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;删除Topic&quot;&gt;&lt;a href=&quot;#删除Topic&quot; class=&quot;headerlink&quot; title=&quot;删除Topic&quot;&gt;&lt;/a&gt;删除Topic&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;创建Topic&quot;&gt;&lt;a href=&quot;#创建Topic&quot; class=&quot;headerlink&quot; title=&quot;创建Topic&quot;&gt;&lt;/a&gt;创建Topic&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/kafka-topics.sh --create --topic &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt; --replication-factor 1 --partitions 4 &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  --zookeeper dpnode03:2181,dpnode04:2181,dpnode05:2181&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;这里创建了一个test消息队列，副本为2，分区为4。&lt;/p&gt;
+&lt;h3 id=&quot;查看Topic属性&quot;&gt;&lt;a href=&quot;#查看Topic属性&quot; class=&quot;headerlink&quot; title=&quot;查看Topic属性&quot;&gt;&lt;/a&gt;查看Topic属性&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ bin/kafka-topics.sh --zookeeper dpnode03:2181,dpnode04,dpnode05 --describe --topic &lt;span class=&quot;built_in&quot;&gt;test&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+      <category term="Kafka" scheme="http://yoursite.com/categories/Kafka/"/>
+    
+    
+      <category term="command" scheme="http://yoursite.com/tags/command/"/>
+    
+      <category term="kafka" scheme="http://yoursite.com/tags/kafka/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Map LinkedHashMap</title>
+    <link href="http://yoursite.com/2016/06/07/Map%E4%B8%ADLinkedHashMap%E7%AE%80%E4%BB%8B/"/>
+    <id>http://yoursite.com/2016/06/07/Map中LinkedHashMap简介/</id>
+    <published>2016-06-07T03:32:54.000Z</published>
+    <updated>2016-06-08T09:42:17.114Z</updated>
+    
+    <content type="html">&lt;p&gt;这是hashmap&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      &lt;p&gt;这是hashmap&lt;/p&gt;
+
     
     </summary>
     
+      <category term="Java" scheme="http://yoursite.com/categories/Java/"/>
+    
+    
+      <category term="map" scheme="http://yoursite.com/tags/map/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hive命令行使用</title>
+    <link href="http://yoursite.com/2016/04/29/Hive%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>http://yoursite.com/2016/04/29/Hive命令行使用/</id>
+    <published>2016-04-29T07:40:20.000Z</published>
+    <updated>2016-06-08T01:50:53.792Z</updated>
+    
+    <content type="html">&lt;p&gt;这是我的第一篇文章&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这是我的第一篇文章&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Hive" scheme="http://yoursite.com/categories/Hive/"/>
+    
+    
+      <category term="hive" scheme="http://yoursite.com/tags/hive/"/>
+    
+      <category term="command" scheme="http://yoursite.com/tags/command/"/>
     
   </entry>
   
