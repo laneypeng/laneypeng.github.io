@@ -1,601 +1,524 @@
-<!doctype html>
-
-
-
-  
-
-
-<html class="theme-next mist use-motion">
+<!DOCTYPE html>
+<html lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="PengLi" />
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
-
-
-
-
-
-
-
-
-
-
-
-
-  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
-
-
-
-
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
-
-
-  <meta name="keywords" content="map," />
-
-
-
-
-
-  <link rel="alternate" href="/atom.xml" title="拾光" type="application/atom+xml" />
-
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
-
-
-
-
-
-
-<meta name="description" content="这是hashmap">
+<meta name="description" content="LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。　　这">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Map LinkedHashMap">
-<meta property="og:url" content="http://yoursite.com/2016/06/07/Map中LinkedHashMap简介/index.html">
+<meta property="og:url" content="http://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/index.html">
 <meta property="og:site_name" content="拾光">
-<meta property="og:description" content="这是hashmap">
-<meta property="og:updated_time" content="2016-06-08T09:42:17.114Z">
+<meta property="og:description" content="LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。　　这">
+<meta property="og:updated_time" content="2016-06-10T03:28:56.517Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Map LinkedHashMap">
-<meta name="twitter:description" content="这是hashmap">
+<meta name="twitter:description" content="LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。　　这">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternative" href="/atom.xml" title="拾光" type="application/atom+xml">
 
 
 
-<script type="text/javascript" id="hexo.configuration">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: 0,
-      author: '博主'
+    <link rel="shortcut icon" href="/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>Map LinkedHashMap | 拾光</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        open_in_new: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: undefined
     }
-  };
 </script>
 
-  <title> Map LinkedHashMap | 拾光 </title>
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
 </head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">PengLi</a></h1>
+        </hgroup>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+        
+        <p class="header-subtitle">勿&amp;忘</p>
+        
 
-  
-
-
-
-
+        
 
 
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
 
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive/">hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/storm/">storm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可靠性/">可靠性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/流式处理/">流式处理</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
 
-
-
-  
-  
-    
-  
-
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
-    <div class="headband"></div>
-
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-meta ">
-  
-
-  <div class="custom-logo-site-title">
-    <a href="/"  class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <span class="site-title">拾光</span>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-  <p class="site-subtitle">拾光&勿忘</p>
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于大数据</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
 </div>
-
-<div class="site-nav-toggle">
-  <button>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-    <span class="btn-bar"></span>
-  </button>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">PengLi</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">PengLi</a></h1>
+            </hgroup>
             
-              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            <p class="header-subtitle">勿&amp;忘</p>
             
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-categories">
-          <a href="/categories" rel="section">
-            
-              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
-            
-            分类
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                            
+                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-
- </div>
-    </header>
-
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
-
-  <div id="posts" class="posts-expand">
+      <div class="body-wrap"><article id="post-Map中LinkedHashMap简介" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/07/Map中LinkedHashMap简介/" class="article-date">
+      <time datetime="2016-06-07T03:32:54.000Z" itemprop="datePublished">2016-06-07</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
     
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
+      <input type="hidden" class="isFancy" />
     
-      <header class="post-header">
-
+    
+      <header class="article-header">
         
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                Map LinkedHashMap
-              
-            
-          </h1>
-        
+  
+    <h1 class="article-title" itemprop="name">
+      Map LinkedHashMap
+    </h1>
+  
 
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-07T11:32:54+08:00" content="2016-06-07">
-              2016-06-07
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Java/" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
       </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
       
-      
-
-      
-        <p>这是hashmap</p>
-
-      
-    </div>
-    
-    <div>
-      
+      <div class="article-info article-info-post">
         
-      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
     </div>
 
-    <div>
-      
+
         
-      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li></ul>
     </div>
 
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/map/" rel="tag">#map</a>
-          
-        </div>
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/04/29/Hive命令行使用/" rel="next" title="Hive命令行使用">
-                <i class="fa fa-chevron-left"></i> Hive命令行使用
-              </a>
-            
-          </div>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/08/Kafka命令行使用/" rel="prev" title="Kafka命令行使用">
-                Kafka命令行使用 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </article>
-
-
-
-    <div class="post-spread">
-      
-    </div>
-  </div>
-
-
-          </div>
-          
-
-
-          
-  <div class="comments" id="comments">
-    
-  </div>
-
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
-
-      <section class="site-overview sidebar-panel ">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/images/myphoto.gif"
-               alt="PengLi" />
-          <p class="site-author-name" itemprop="name">PengLi</p>
-          <p class="site-description motion-element" itemprop="description">Bigdata</p>
-        </div>
-        <nav class="site-state motion-element">
-          <div class="site-state-item site-state-posts">
-            <a href="/archives">
-              <span class="site-state-item-count">7</span>
-              <span class="site-state-item-name">日志</span>
-            </a>
-          </div>
-
-          
-            <div class="site-state-item site-state-categories">
-              <a href="/categories">
-                <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">分类</span>
-              </a>
-            </div>
-          
-
-          
-            <div class="site-state-item site-state-tags">
-              <a href="/tags">
-                <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">标签</span>
-              </a>
-            </div>
-          
-
-        </nav>
-
-        
-          <div class="feed-link motion-element">
-            <a href="/atom.xml" rel="alternate">
-              <i class="fa fa-rss"></i>
-              RSS
-            </a>
-          </div>
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-      </section>
-
-      
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-            
-              
-            
-            
-              <p class="post-toc-empty">此文章未包含目录</p>
-            
-          </div>
-        </section>
-      
-
-    </div>
-  </aside>
-
-
-        
+        <div class="clearfix"></div>
       </div>
-    </main>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>　　LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。<br>　　这里介绍它的基础、用法实例和LRU缓存实践。<br><a id="more"></a></p>
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h3><p>　　LinkedHashMap有五种构造方式：</p>
+<blockquote>
+<p>1.　<strong>new LinkedHashMap();</strong><br>2.　<strong>new LinkedHashMap(int initialCapacity);</strong>　☆<br>3.　<strong>new LinkedHashMap(int initialCapacity, float loadFactor);</strong><br>4.　<strong>new LinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder);</strong>　☆<br>5.　<strong>new LinkedHashMap(Map&lt;? extends K, ? extends V&gt; m);</strong></p>
+</blockquote>
+<p>第一种是无参构造：父类默认大小16，因子0.75；默认accessOrder为false（表示迭代插入顺序）<br>第二种定义初始大小的构造：父类默认因子0.75；默认accessOrder为false。<br>第三种定义初始大小和加载因子（一般仍然给定0.75），默认accessOrder为false。<br>第四种定义初始大小、加载因子，自定义迭代顺序：true表示按访问顺序，false表示按插入顺序。<br>第五中将给定的Map转为LinkedHashMap。<br>　　HashMap的构造器最后会调用init()方法，进行相关的初始化，这个方法在HashMap的实现中并无意义，只是提供给子类实现相关的初始化调用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">HashMap</span><span class="params">(<span class="keyword">int</span> initialCapacity, <span class="keyword">float</span> loadFactor)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (initialCapacity &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal initial capacity: "</span> +</span><br><span class="line">                                               initialCapacity);</span><br><span class="line">        <span class="keyword">if</span> (initialCapacity &gt; MAXIMUM_CAPACITY)</span><br><span class="line">            initialCapacity = MAXIMUM_CAPACITY;</span><br><span class="line">        <span class="keyword">if</span> (loadFactor &lt;= <span class="number">0</span> || Float.isNaN(loadFactor))</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"Illegal load factor: "</span> +</span><br><span class="line">                                               loadFactor);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">this</span>.loadFactor = loadFactor;</span><br><span class="line">        threshold = initialCapacity;</span><br><span class="line">        init();   <span class="comment">//最后进行初始化</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　LinkedHashMap重写了init()方法，在调用父类的构造方法完成构造后，进一步实现了对其元素Entry的初始化操作。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        header = <span class="keyword">new</span> Entry&lt;&gt;(-<span class="number">1</span>, <span class="keyword">null</span>, <span class="keyword">null</span>, <span class="keyword">null</span>);</span><br><span class="line">        header.before = header.after = header;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Entry元素"><a href="#Entry元素" class="headerlink" title="Entry元素"></a>Entry<k,v>元素</k,v></h3><p>　　LinkedHashMap中<code>Entry&lt;K,V&gt;</code>元素继承了HashMap的Entry并进行了重定义，每个Entry结构都维护了相应的before Entry和after Entry元素<code>Entry&lt;K,V&gt; before, after;</code> 。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span><br><span class="line"> * 双向链表表头元素.</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">transient</span> Entry&lt;K,V&gt; header;</span><br><span class="line"><span class="comment">/**</span><br><span class="line"> * LinkedHashMap的Entry元素。 </span><br><span class="line"> * 继承HashMap的Entry元素，又保存了其上一个元素before和下一个元素after的引用。</span><br><span class="line"> */</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">HashMap</span>.<span class="title">Entry</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// These fields comprise the doubly linked list used for iteration.</span></span><br><span class="line">    Entry&lt;K,V&gt; before, after;</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="put写操作"><a href="#put写操作" class="headerlink" title="put写操作"></a>put写操作</h3><p>　　LinkedHashMap并未重写父类HashMap的put方法，而是重写了父类HashMap的put方法调用的子方法void recordAccess(HashMap m),void addEntry(int hash, K key, V value, int bucketIndex)和void createEntry(int hash, K key, V value, int bucketIndex)提供了自己特有的双向链接列表的实现。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEntry</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">int</span> bucketIndex)</span> </span>&#123;  </span><br><span class="line">    <span class="comment">// 调用create方法，将新元素以双向链表的的形式加入到映射中。  </span></span><br><span class="line">    createEntry(hash, key, value, bucketIndex);  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">// 删除最近最少使用元素的策略定义  </span></span><br><span class="line">    Entry&lt;K,V&gt; eldest = header.after;  </span><br><span class="line">    <span class="keyword">if</span> (removeEldestEntry(eldest)) &#123;  </span><br><span class="line">        removeEntryForKey(eldest.key);  </span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;  </span><br><span class="line">        <span class="keyword">if</span> (size &gt;= threshold)  </span><br><span class="line">            resize(<span class="number">2</span> * table.length);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">createEntry</span><span class="params">(<span class="keyword">int</span> hash, K key, V value, <span class="keyword">int</span> bucketIndex)</span> </span>&#123;  </span><br><span class="line">    HashMap.Entry&lt;K,V&gt; old = table[bucketIndex];  </span><br><span class="line">    Entry&lt;K,V&gt; e = <span class="keyword">new</span> Entry&lt;K,V&gt;(hash, key, value, old);  </span><br><span class="line">    table[bucketIndex] = e;  </span><br><span class="line">    <span class="comment">// 调用元素的addBrefore方法，将元素加入到哈希、双向链接列表。  </span></span><br><span class="line">    e.addBefore(header);  </span><br><span class="line">    size++;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addBefore</span><span class="params">(Entry&lt;K,V&gt; existingEntry)</span> </span>&#123;  </span><br><span class="line">    after  = existingEntry;  </span><br><span class="line">    before = existingEntry.before;  </span><br><span class="line">    before.after = <span class="keyword">this</span>;  </span><br><span class="line">    after.before = <span class="keyword">this</span>;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="get读操作"><a href="#get读操作" class="headerlink" title="get读操作"></a>get读操作</h3><p>　　LinkedHashMap重写了父类HashMap的get方法，实际在调用父类getEntry()方法取得查找的元素后，再判断当排序模式accessOrder为true时，记录访问顺序，将最新访问的元素添加到双向链表的表头，并从原来的位置删除。由于的链表的增加、删除操作是常量级的，故并不会带来性能的损失。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> V <span class="title">get</span><span class="params">(Object key)</span> </span>&#123;  </span><br><span class="line">    <span class="comment">// 调用父类HashMap的getEntry()方法，取得要查找的元素。  </span></span><br><span class="line">    Entry&lt;K,V&gt; e = (Entry&lt;K,V&gt;)getEntry(key);  </span><br><span class="line">    <span class="keyword">if</span> (e == <span class="keyword">null</span>)  </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;  </span><br><span class="line">    <span class="comment">// 记录访问顺序。  </span></span><br><span class="line">    e.recordAccess(<span class="keyword">this</span>);  </span><br><span class="line">    <span class="keyword">return</span> e.value;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">recordAccess</span><span class="params">(HashMap&lt;K,V&gt; m)</span> </span>&#123;  </span><br><span class="line">    LinkedHashMap&lt;K,V&gt; lm = (LinkedHashMap&lt;K,V&gt;)m;  </span><br><span class="line">    <span class="comment">// 如果定义了LinkedHashMap的迭代顺序为访问顺序，  </span></span><br><span class="line">    <span class="comment">// 则删除以前位置上的元素，并将最新访问的元素添加到链表表头。  </span></span><br><span class="line">    <span class="keyword">if</span> (lm.accessOrder) &#123;  </span><br><span class="line">        lm.modCount++;  </span><br><span class="line">        remove();  </span><br><span class="line">        addBefore(lm.header);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Demo实例"><a href="#Demo实例" class="headerlink" title="Demo实例"></a>Demo实例</h2><h3 id="默认按插入顺序进行迭代"><a href="#默认按插入顺序进行迭代" class="headerlink" title="默认按插入顺序进行迭代"></a>默认按插入顺序进行迭代</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Map&lt;String,Integer&gt; lhmp = <span class="keyword">new</span> LinkedHashMap&lt;String, Integer&gt;();</span><br><span class="line">        lhmp.put(<span class="string">"Chinese"</span>, <span class="number">80</span>);</span><br><span class="line">        lhmp.put(<span class="string">"Math"</span>,    <span class="number">85</span>);</span><br><span class="line">        lhmp.put(<span class="string">"English"</span>, <span class="number">90</span>);</span><br><span class="line">        lhmp.put(<span class="string">"Science"</span>, <span class="number">95</span>);</span><br><span class="line"></span><br><span class="line">        Iterator iter = lhmp.entrySet().iterator();</span><br><span class="line">        <span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">            Map.Entry entry = (Map.Entry) iter.next();</span><br><span class="line">            System.out.println(entry.getKey() + <span class="string">" : "</span> + entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<blockquote>
+<p>Chinese : 80<br>Math : 85<br>English : 90<br>Science : 95</p>
+</blockquote>
+<h3 id="定义按访问顺序迭代"><a href="#定义按访问顺序迭代" class="headerlink" title="定义按访问顺序迭代"></a>定义按访问顺序迭代</h3><p>LinkedHashMap 定义了排序模式<code>accessOrder</code>，该属性为boolean型变量，对于访问顺序，为true,对于插入顺序，则为false。一般情况下，不必指定排序模式，其迭代顺序即为默认为插入顺序。这里自定义true。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Integer&gt; lhmap = <span class="keyword">new</span> LinkedHashMap&lt;String, Integer&gt;(<span class="number">16</span>,<span class="number">0.75f</span>,<span class="keyword">true</span>);</span><br><span class="line">        lhmap.put(<span class="string">"Chinese"</span>, <span class="number">80</span>);</span><br><span class="line">        lhmap.put(<span class="string">"Math"</span>,    <span class="number">85</span>);</span><br><span class="line">        lhmap.put(<span class="string">"English"</span>, <span class="number">90</span>);</span><br><span class="line">        lhmap.put(<span class="string">"Science"</span>, <span class="number">95</span>);</span><br><span class="line"></span><br><span class="line">        lhmap.get(<span class="string">"Math"</span>); <span class="comment">//通过get读取Math元素</span></span><br><span class="line"></span><br><span class="line">        Iterator iter = lhmap.entrySet().iterator();</span><br><span class="line">        <span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">            Map.Entry entry = (Map.Entry) iter.next();</span><br><span class="line">            System.out.println(entry.getKey() + <span class="string">" : "</span> + entry.getValue());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：</p>
+<blockquote>
+<p>Chinese : 80<br>English : 90<br>Science : 95<br>Math : 85</p>
+</blockquote>
+<p>当通过get来获得某个元素后，get方法内部，会在最后通过<code>afterNodeAccess</code>方法来调整链表的指向它会自动会将这次访问的元素移至链表尾部，而在方法<code>afterNodeInsertion</code>中，只要满足条件，便移除最老的数据,即链表的head。不断访问可以形成按访问顺序排序的链表。</p>
+<h2 id="使用LinkedHashMap构建线程安全的LRU缓存"><a href="#使用LinkedHashMap构建线程安全的LRU缓存" class="headerlink" title="使用LinkedHashMap构建线程安全的LRU缓存"></a>使用LinkedHashMap构建线程安全的LRU缓存</h2><p>　　哈希映射的迭代访问顺序很适合构建LRU缓存。当你为LinkedHashMap设置有限空间的时候，自然便完成了LRU Cache的效果。当然前提是，你必须重写一个方法<code>removeEldestEntry</code>,返回true。表示空间已满时，删除最老的。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    <span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry&lt;K, V&gt; eldest)</span></span>&#123;     </span><br><span class="line">    <span class="keyword">return</span> size()&gt;capacity;        </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>　　LinkedHashMap类不是线程安全的，所以使用的时候需要加读写锁。下面构建一个线程安全的LRU缓存。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> MAX_LENGTH = <span class="number">1</span> &lt;&lt; <span class="number">30</span>;  <span class="comment">//最大长度</span></span><br><span class="line">    <span class="keyword">private</span> LinkedHashMap&lt;K, V&gt; map;</span><br><span class="line">    <span class="keyword">private</span> ReadWriteLock lock = <span class="keyword">new</span> ReentrantReadWriteLock(); <span class="comment">//读写锁</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> initLength)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>(initLength, MAX_LENGTH);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">LRUCache</span><span class="params">(<span class="keyword">int</span> initLength, <span class="keyword">int</span> maxLength)</span> </span>&#123;</span><br><span class="line">        MAX_LENGTH = maxLength;</span><br><span class="line">        map = <span class="keyword">new</span> LinkedHashMap&lt;K, V&gt;(initLength, <span class="number">0.75f</span>, <span class="keyword">true</span>) &#123;</span><br><span class="line">            <span class="function"><span class="keyword">protected</span> <span class="keyword">boolean</span> <span class="title">removeEldestEntry</span><span class="params">(Map.Entry&lt;K, V&gt; eldest)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> size() &gt; MAX_LENGTH;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 添加项</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> item  项</span><br><span class="line">     * <span class="doctag">@param</span> state 状态</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">put</span><span class="params">(K item, V state)</span> </span>&#123;</span><br><span class="line">        lock.writeLock().lock();</span><br><span class="line">        map.put(item, state);</span><br><span class="line">        lock.writeLock().unlock();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 获取值,使用前请判断是否存在item</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> item 项</span><br><span class="line">     * <span class="doctag">@return</span> value 值</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> V <span class="title">get</span><span class="params">(String item)</span> </span>&#123;</span><br><span class="line">        lock.readLock().lock();</span><br><span class="line">        V value = map.get(item);</span><br><span class="line">        lock.readLock().unlock();</span><br><span class="line">        <span class="keyword">return</span> value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 是否存在</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> item 项</span><br><span class="line">     * <span class="doctag">@return</span> 是否存在</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">containsKey</span><span class="params">(String item)</span> </span>&#123;</span><br><span class="line">        lock.readLock().lock();</span><br><span class="line">        <span class="keyword">boolean</span> isContainer = map.containsKey(item);</span><br><span class="line">        lock.readLock().unlock();</span><br><span class="line">        <span class="keyword">return</span> isContainer;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span><br><span class="line">     * 删除item</span><br><span class="line">     *</span><br><span class="line">     * <span class="doctag">@param</span> item 项</span><br><span class="line">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">remove</span><span class="params">(String item)</span> </span>&#123;</span><br><span class="line">        lock.writeLock().lock();</span><br><span class="line">        map.remove(item);</span><br><span class="line">        lock.writeLock().unlock();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> Set&lt;Map.Entry&lt;K, V&gt;&gt; entrySet()&#123;</span><br><span class="line">        <span class="keyword">return</span> map.entrySet();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>现在测试一下缓存使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        LRUCache&lt;String,Integer&gt; cache = <span class="keyword">new</span> LRUCache&lt;String,Integer&gt;(<span class="number">5</span>,<span class="number">5</span>);</span><br><span class="line">        cache.put(<span class="string">"111"</span>,<span class="number">1</span>);</span><br><span class="line">        cache.put(<span class="string">"222"</span>,<span class="number">2</span>);</span><br><span class="line">        cache.put(<span class="string">"333"</span>,<span class="number">3</span>);</span><br><span class="line">        cache.put(<span class="string">"444"</span>,<span class="number">4</span>);</span><br><span class="line">        cache.put(<span class="string">"555"</span>,<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">        Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entries=  cache.entrySet();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry entry: entries)&#123;</span><br><span class="line">            String key = (String) entry.getKey();</span><br><span class="line">            Integer value = (Integer) entry.getValue();</span><br><span class="line">            System.out.println(key + <span class="string">" : "</span> + value);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"========================"</span>);</span><br><span class="line">        cache.put(<span class="string">"666"</span>,<span class="number">6</span>);</span><br><span class="line">        Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entries2=  cache.entrySet();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry entry: entries2)&#123;</span><br><span class="line">            String key = (String) entry.getKey();</span><br><span class="line">            Integer value = (Integer) entry.getValue();</span><br><span class="line">            System.out.println(key + <span class="string">" : "</span> + value);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">"========================"</span>);</span><br><span class="line">        cache.get(<span class="string">"333"</span>);</span><br><span class="line">        Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entries3=  cache.entrySet();</span><br><span class="line">        <span class="keyword">for</span> (Map.Entry entry: entries3)&#123;</span><br><span class="line">            String key = (String) entry.getKey();</span><br><span class="line">            Integer value = (Integer) entry.getValue();</span><br><span class="line">            System.out.println(key + <span class="string">" : "</span> + value);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>输出结果：</p>
+<blockquote>
+<p>111 : 1<br>222 : 2<br>333 : 3<br>444 : 4<br>555 : 5<br><em>========================</em><br>222 : 2<br>333 : 3<br>444 : 4<br>555 : 5<br>666 : 6<br><em>========================</em><br>222 : 2<br>444 : 4<br>555 : 5<br>666 : 6<br>333 : 3</p>
+</blockquote>
+<p>第一次向缓存中添加5个元素，已经达到缓存的最大空间。第二次再添加了一个元素<code>&quot;666&quot;,6</code>，缓存删掉了链表头部的<code>&quot;111&quot;,1</code>。第三次通过<code>get(&quot;333&quot;)</code>访问元素，缓存将其移动到链表末尾。这就是LRU的<code>最近最少使用</code>体现。</p>
 
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2016</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">PengLi</span>
-</div>
-
-<div class="powered-by">
-  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
-
-        
-
-        
-      </div>
-    </footer>
-
-    <div class="back-to-top">
-      <i class="fa fa-arrow-up"></i>
+      
     </div>
+    
   </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2016/06/07/Map中LinkedHashMap简介/">Map LinkedHashMap</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">PengLi</a></p>
+        <p><span>发布时间:</span>2016-06-07, 11:32:54</p>
+        <p><span>最后更新:</span>2016-06-10, 11:28:56</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/07/Map中LinkedHashMap简介/" title="Map LinkedHashMap">http://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/　　作者: PengLi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2016/06/08/Kafka命令行使用/">
+                    Kafka命令行使用
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/29/Hive命令行使用/">
+                    Hive命令行使用
+                </a>
+            </div>
+        
+    </nav>
 
   
+</article>
 
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造"><span class="toc-number">1.1.</span> <span class="toc-text">构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Entry元素"><span class="toc-number">1.2.</span> <span class="toc-text">Entry元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put写操作"><span class="toc-number">1.3.</span> <span class="toc-text">put写操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get读操作"><span class="toc-number">1.4.</span> <span class="toc-text">get读操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo实例"><span class="toc-number">2.</span> <span class="toc-text">Demo实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认按插入顺序进行迭代"><span class="toc-number">2.1.</span> <span class="toc-text">默认按插入顺序进行迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义按访问顺序迭代"><span class="toc-number">2.2.</span> <span class="toc-text">定义按访问顺序迭代</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用LinkedHashMap构建线程安全的LRU缓存"><span class="toc-number">3.</span> <span class="toc-text">使用LinkedHashMap构建线程安全的LRU缓存</span></a></li></ol>
+</div>
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+</style>
+
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script>
+    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
 </script>
 
 
 
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Map LinkedHashMap　| 拾光　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
 
 
 
 
 
 
-  
+
+    
 
 
 
-  
-  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
 
-  
-  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2016/06/08/Kafka命令行使用/" title="上一篇: Kafka命令行使用">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
 
-  
-  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+        
+            <a href="/2016/04/29/Hive命令行使用/" title="下一篇: Hive命令行使用">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
 
-  
-  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-  
-  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/SparkSQL将CSV转为parquet文件/">SparkSQL转CSV为parquet文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Spark基础架构/">Spark架构基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Storm的可靠容错机制/">Storm可靠性与容错机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Storm基础架构/">Storm架构基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Kafka命令行使用/">Kafka命令行使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/Map中LinkedHashMap简介/">Map LinkedHashMap</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/Hive命令行使用/">Hive命令行使用</a></li></ul>
 
 
 
-  
-  
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016 PengLi
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >本站到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
 
 
 
-  
 
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
-
-
-
-  
-
-
-
-  
-
-
-
-  
-  
-  
-
-  
-
-  
-
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
 </body>
 </html>
