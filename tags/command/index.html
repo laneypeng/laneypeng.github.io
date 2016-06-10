@@ -18,7 +18,7 @@
 <meta name="description" content="目前主要从事大数据架构和开发">
 <meta property="og:type" content="website">
 <meta property="og:title" content="拾光">
-<meta property="og:url" content="http://laneypeng.github.io/tags/command/index.html">
+<meta property="og:url" content="https://laneypeng.github.io/tags/command/index.html">
 <meta property="og:site_name" content="拾光">
 <meta property="og:description" content="目前主要从事大数据架构和开发">
 <meta name="twitter:card" content="summary">
@@ -32,7 +32,7 @@
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
 
 
 
@@ -72,7 +72,7 @@
         open_in_new: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -106,6 +106,13 @@
         <p class="header-subtitle">勿&amp;忘</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 

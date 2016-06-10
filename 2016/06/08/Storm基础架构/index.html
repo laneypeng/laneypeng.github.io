@@ -18,7 +18,7 @@
 <meta name="description" content="目前主要从事大数据架构和开发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Storm架构基础">
-<meta property="og:url" content="http://laneypeng.github.io/2016/06/08/Storm基础架构/index.html">
+<meta property="og:url" content="https://laneypeng.github.io/2016/06/08/Storm基础架构/index.html">
 <meta property="og:site_name" content="拾光">
 <meta property="og:description" content="目前主要从事大数据架构和开发">
 <meta property="og:updated_time" content="2016-06-08T02:59:50.615Z">
@@ -33,7 +33,7 @@
 
 
 
-    <link rel="shortcut icon" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
 
 
 
@@ -73,7 +73,7 @@
         open_in_new: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -107,6 +107,13 @@
         <p class="header-subtitle">勿&amp;忘</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -316,8 +323,8 @@
         <p><span>发布时间:</span>2016-06-08, 10:54:47</p>
         <p><span>最后更新:</span>2016-06-08, 10:59:50</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/08/Storm基础架构/" title="Storm架构基础">http://laneypeng.github.io/2016/06/08/Storm基础架构/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://laneypeng.github.io/2016/06/08/Storm基础架构/　　作者: PengLi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/06/08/Storm基础架构/" title="Storm架构基础">https://laneypeng.github.io/2016/06/08/Storm基础架构/</a>
+            <span class="copy-path" data-clipboard-text="原文: https://laneypeng.github.io/2016/06/08/Storm基础架构/　　作者: PengLi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>

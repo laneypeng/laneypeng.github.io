@@ -4,9 +4,9 @@
   <subtitle>勿&amp;忘</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://laneypeng.github.io/"/>
+  <link href="https://laneypeng.github.io/"/>
   <updated>2016-06-08T09:42:23.974Z</updated>
-  <id>http://laneypeng.github.io/</id>
+  <id>https://laneypeng.github.io/</id>
   
   <author>
     <name>PengLi</name>
@@ -17,8 +17,8 @@
   
   <entry>
     <title>SparkSQL转CSV为parquet文件</title>
-    <link href="http://laneypeng.github.io/2016/06/08/SparkSQL%E5%B0%86CSV%E8%BD%AC%E4%B8%BAparquet%E6%96%87%E4%BB%B6/"/>
-    <id>http://laneypeng.github.io/2016/06/08/SparkSQL将CSV转为parquet文件/</id>
+    <link href="https://laneypeng.github.io/2016/06/08/SparkSQL%E5%B0%86CSV%E8%BD%AC%E4%B8%BAparquet%E6%96%87%E4%BB%B6/"/>
+    <id>https://laneypeng.github.io/2016/06/08/SparkSQL将CSV转为parquet文件/</id>
     <published>2016-06-08T03:39:36.000Z</published>
     <updated>2016-06-08T09:42:23.974Z</updated>
     
@@ -28,17 +28,17 @@
     
     </summary>
     
-      <category term="Spark" scheme="http://laneypeng.github.io/categories/Spark/"/>
+      <category term="Spark" scheme="https://laneypeng.github.io/categories/Spark/"/>
     
     
-      <category term="spark" scheme="http://laneypeng.github.io/tags/spark/"/>
+      <category term="spark" scheme="https://laneypeng.github.io/tags/spark/"/>
     
   </entry>
   
   <entry>
     <title>Spark架构基础</title>
-    <link href="http://laneypeng.github.io/2016/06/08/Spark%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
-    <id>http://laneypeng.github.io/2016/06/08/Spark基础架构/</id>
+    <link href="https://laneypeng.github.io/2016/06/08/Spark%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
+    <id>https://laneypeng.github.io/2016/06/08/Spark基础架构/</id>
     <published>2016-06-08T03:37:43.000Z</published>
     <updated>2016-06-08T09:42:17.127Z</updated>
     
@@ -48,17 +48,17 @@
     
     </summary>
     
-      <category term="Spark" scheme="http://laneypeng.github.io/categories/Spark/"/>
+      <category term="Spark" scheme="https://laneypeng.github.io/categories/Spark/"/>
     
     
-      <category term="spark" scheme="http://laneypeng.github.io/tags/spark/"/>
+      <category term="spark" scheme="https://laneypeng.github.io/tags/spark/"/>
     
   </entry>
   
   <entry>
     <title>Storm可靠性与容错机制</title>
-    <link href="http://laneypeng.github.io/2016/06/08/Storm%E7%9A%84%E5%8F%AF%E9%9D%A0%E5%AE%B9%E9%94%99%E6%9C%BA%E5%88%B6/"/>
-    <id>http://laneypeng.github.io/2016/06/08/Storm的可靠容错机制/</id>
+    <link href="https://laneypeng.github.io/2016/06/08/Storm%E7%9A%84%E5%8F%AF%E9%9D%A0%E5%AE%B9%E9%94%99%E6%9C%BA%E5%88%B6/"/>
+    <id>https://laneypeng.github.io/2016/06/08/Storm的可靠容错机制/</id>
     <published>2016-06-08T02:55:14.000Z</published>
     <updated>2016-06-08T02:58:57.528Z</updated>
     
@@ -68,21 +68,21 @@
     
     </summary>
     
-      <category term="Storm" scheme="http://laneypeng.github.io/categories/Storm/"/>
+      <category term="Storm" scheme="https://laneypeng.github.io/categories/Storm/"/>
     
     
-      <category term="storm" scheme="http://laneypeng.github.io/tags/storm/"/>
+      <category term="storm" scheme="https://laneypeng.github.io/tags/storm/"/>
     
-      <category term="流式处理" scheme="http://laneypeng.github.io/tags/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86/"/>
+      <category term="流式处理" scheme="https://laneypeng.github.io/tags/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="可靠性" scheme="http://laneypeng.github.io/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/"/>
+      <category term="可靠性" scheme="https://laneypeng.github.io/tags/%E5%8F%AF%E9%9D%A0%E6%80%A7/"/>
     
   </entry>
   
   <entry>
     <title>Storm架构基础</title>
-    <link href="http://laneypeng.github.io/2016/06/08/Storm%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
-    <id>http://laneypeng.github.io/2016/06/08/Storm基础架构/</id>
+    <link href="https://laneypeng.github.io/2016/06/08/Storm%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/"/>
+    <id>https://laneypeng.github.io/2016/06/08/Storm基础架构/</id>
     <published>2016-06-08T02:54:47.000Z</published>
     <updated>2016-06-08T02:59:50.615Z</updated>
     
@@ -92,21 +92,21 @@
     
     </summary>
     
-      <category term="Storm" scheme="http://laneypeng.github.io/categories/Storm/"/>
+      <category term="Storm" scheme="https://laneypeng.github.io/categories/Storm/"/>
     
     
-      <category term="storm" scheme="http://laneypeng.github.io/tags/storm/"/>
+      <category term="storm" scheme="https://laneypeng.github.io/tags/storm/"/>
     
-      <category term="流式处理" scheme="http://laneypeng.github.io/tags/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86/"/>
+      <category term="流式处理" scheme="https://laneypeng.github.io/tags/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86/"/>
     
-      <category term="架构" scheme="http://laneypeng.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
+      <category term="架构" scheme="https://laneypeng.github.io/tags/%E6%9E%B6%E6%9E%84/"/>
     
   </entry>
   
   <entry>
     <title>Kafka命令行使用</title>
-    <link href="http://laneypeng.github.io/2016/06/08/Kafka%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/"/>
-    <id>http://laneypeng.github.io/2016/06/08/Kafka命令行使用/</id>
+    <link href="https://laneypeng.github.io/2016/06/08/Kafka%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>https://laneypeng.github.io/2016/06/08/Kafka命令行使用/</id>
     <published>2016-06-08T01:49:20.000Z</published>
     <updated>2016-06-08T09:42:38.008Z</updated>
     
@@ -129,21 +129,21 @@
     
     </summary>
     
-      <category term="Kafka" scheme="http://laneypeng.github.io/categories/Kafka/"/>
+      <category term="Kafka" scheme="https://laneypeng.github.io/categories/Kafka/"/>
     
     
-      <category term="command" scheme="http://laneypeng.github.io/tags/command/"/>
+      <category term="command" scheme="https://laneypeng.github.io/tags/command/"/>
     
-      <category term="kafka" scheme="http://laneypeng.github.io/tags/kafka/"/>
+      <category term="kafka" scheme="https://laneypeng.github.io/tags/kafka/"/>
     
   </entry>
   
   <entry>
     <title>Map LinkedHashMap</title>
-    <link href="http://laneypeng.github.io/2016/06/07/Map%E4%B8%ADLinkedHashMap%E7%AE%80%E4%BB%8B/"/>
-    <id>http://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/</id>
+    <link href="https://laneypeng.github.io/2016/06/07/Map%E4%B8%ADLinkedHashMap%E7%AE%80%E4%BB%8B/"/>
+    <id>https://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/</id>
     <published>2016-06-07T03:32:54.000Z</published>
-    <updated>2016-06-10T03:28:56.517Z</updated>
+    <updated>2016-06-10T05:09:23.299Z</updated>
     
     <content type="html">&lt;p&gt;　　LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。&lt;br&gt;　　这里介绍它的基础、用法实例和LRU缓存实践。&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;基础&quot;&gt;&lt;a href=&quot;#基础&quot; class=&quot;headerlink&quot; title=&quot;基础&quot;&gt;&lt;/a&gt;基础&lt;/h2&gt;&lt;h3 id=&quot;构造&quot;&gt;&lt;a href=&quot;#构造&quot; class=&quot;headerlink&quot; title=&quot;构造&quot;&gt;&lt;/a&gt;构造&lt;/h3&gt;&lt;p&gt;　　LinkedHashMap有五种构造方式：&lt;/p&gt;
@@ -156,6 +156,7 @@
 &lt;h3 id=&quot;put写操作&quot;&gt;&lt;a href=&quot;#put写操作&quot; class=&quot;headerlink&quot; title=&quot;put写操作&quot;&gt;&lt;/a&gt;put写操作&lt;/h3&gt;&lt;p&gt;　　LinkedHashMap并未重写父类HashMap的put方法，而是重写了父类HashMap的put方法调用的子方法void recordAccess(HashMap m),void addEntry(int hash, K key, V value, int bucketIndex)和void createEntry(int hash, K key, V value, int bucketIndex)提供了自己特有的双向链接列表的实现。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;addEntry&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; hash, K key, V value, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; bucketIndex)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 调用create方法，将新元素以双向链表的的形式加入到映射中。  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    createEntry(hash, key, value, bucketIndex);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 删除最近最少使用元素的策略定义  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Entry&amp;lt;K,V&amp;gt; eldest = header.after;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (removeEldestEntry(eldest)) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        removeEntryForKey(eldest.key);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; &lt;span class=&quot;keyword&quot;&gt;else&lt;/span&gt; &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (size &amp;gt;= threshold)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            resize(&lt;span class=&quot;number&quot;&gt;2&lt;/span&gt; * table.length);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;createEntry&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(&lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; hash, K key, V value, &lt;span class=&quot;keyword&quot;&gt;int&lt;/span&gt; bucketIndex)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    HashMap.Entry&amp;lt;K,V&amp;gt; old = table[bucketIndex];  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Entry&amp;lt;K,V&amp;gt; e = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; Entry&amp;lt;K,V&amp;gt;(hash, key, value, old);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    table[bucketIndex] = e;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 调用元素的addBrefore方法，将元素加入到哈希、双向链接列表。  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    e.addBefore(header);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    size++;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;private&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;addBefore&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Entry&amp;lt;K,V&amp;gt; existingEntry)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    after  = existingEntry;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    before = existingEntry.before;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    before.after = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    after.before = &lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;下图展示了从初始化LinkedHashMap–&amp;gt;添加Entry e1 –&amp;gt;添加Entry e2时，LinkedHashMap结构的变化。&lt;br&gt;&lt;img src=&quot;/img/linkedhashmap-add.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;get读操作&quot;&gt;&lt;a href=&quot;#get读操作&quot; class=&quot;headerlink&quot; title=&quot;get读操作&quot;&gt;&lt;/a&gt;get读操作&lt;/h3&gt;&lt;p&gt;　　LinkedHashMap重写了父类HashMap的get方法，实际在调用父类getEntry()方法取得查找的元素后，再判断当排序模式accessOrder为true时，记录访问顺序，将最新访问的元素添加到双向链表的表头，并从原来的位置删除。由于的链表的增加、删除操作是常量级的，故并不会带来性能的损失。&lt;br&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; V &lt;span class=&quot;title&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(Object key)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 调用父类HashMap的getEntry()方法，取得要查找的元素。  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    Entry&amp;lt;K,V&amp;gt; e = (Entry&amp;lt;K,V&amp;gt;)getEntry(key);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (e == &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;)  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;null&lt;/span&gt;;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 记录访问顺序。  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    e.recordAccess(&lt;span class=&quot;keyword&quot;&gt;this&lt;/span&gt;);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; e.value;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;recordAccess&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(HashMap&amp;lt;K,V&amp;gt; m)&lt;/span&gt; &lt;/span&gt;&amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    LinkedHashMap&amp;lt;K,V&amp;gt; lm = (LinkedHashMap&amp;lt;K,V&amp;gt;)m;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 如果定义了LinkedHashMap的迭代顺序为访问顺序，  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;comment&quot;&gt;// 则删除以前位置上的元素，并将最新访问的元素添加到链表表头。  &lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;if&lt;/span&gt; (lm.accessOrder) &amp;#123;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        lm.modCount++;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        remove();  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        addBefore(lm.header);  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;  &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;h2 id=&quot;Demo实例&quot;&gt;&lt;a href=&quot;#Demo实例&quot; class=&quot;headerlink&quot; title=&quot;Demo实例&quot;&gt;&lt;/a&gt;Demo实例&lt;/h2&gt;&lt;h3 id=&quot;默认按插入顺序进行迭代&quot;&gt;&lt;a href=&quot;#默认按插入顺序进行迭代&quot; class=&quot;headerlink&quot; title=&quot;默认按插入顺序进行迭代&quot;&gt;&lt;/a&gt;默认按插入顺序进行迭代&lt;/h3&gt;&lt;figure class=&quot;highlight java&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;params&quot;&gt;(String[] args)&lt;/span&gt; &lt;/span&gt;&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Map&amp;lt;String,Integer&amp;gt; lhmp = &lt;span class=&quot;keyword&quot;&gt;new&lt;/span&gt; LinkedHashMap&amp;lt;String, Integer&amp;gt;();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        lhmp.put(&lt;span class=&quot;string&quot;&gt;&quot;Chinese&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;80&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        lhmp.put(&lt;span class=&quot;string&quot;&gt;&quot;Math&quot;&lt;/span&gt;,    &lt;span class=&quot;number&quot;&gt;85&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        lhmp.put(&lt;span class=&quot;string&quot;&gt;&quot;English&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;90&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        lhmp.put(&lt;span class=&quot;string&quot;&gt;&quot;Science&quot;&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;95&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Iterator iter = lhmp.entrySet().iterator();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &lt;span class=&quot;keyword&quot;&gt;while&lt;/span&gt; (iter.hasNext()) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            Map.Entry entry = (Map.Entry) iter.next();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            System.out.println(entry.getKey() + &lt;span class=&quot;string&quot;&gt;&quot; : &quot;&lt;/span&gt; + entry.getValue());&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -185,17 +186,17 @@
     
     </summary>
     
-      <category term="Java" scheme="http://laneypeng.github.io/categories/Java/"/>
+      <category term="Java" scheme="https://laneypeng.github.io/categories/Java/"/>
     
     
-      <category term="map" scheme="http://laneypeng.github.io/tags/map/"/>
+      <category term="map" scheme="https://laneypeng.github.io/tags/map/"/>
     
   </entry>
   
   <entry>
     <title>Hive命令行使用</title>
-    <link href="http://laneypeng.github.io/2016/04/29/Hive%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/"/>
-    <id>http://laneypeng.github.io/2016/04/29/Hive命令行使用/</id>
+    <link href="https://laneypeng.github.io/2016/04/29/Hive%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/"/>
+    <id>https://laneypeng.github.io/2016/04/29/Hive命令行使用/</id>
     <published>2016-04-29T07:40:20.000Z</published>
     <updated>2016-06-09T04:58:27.737Z</updated>
     
@@ -207,12 +208,12 @@
     
     </summary>
     
-      <category term="Hive" scheme="http://laneypeng.github.io/categories/Hive/"/>
+      <category term="Hive" scheme="https://laneypeng.github.io/categories/Hive/"/>
     
     
-      <category term="hive" scheme="http://laneypeng.github.io/tags/hive/"/>
+      <category term="hive" scheme="https://laneypeng.github.io/tags/hive/"/>
     
-      <category term="command" scheme="http://laneypeng.github.io/tags/command/"/>
+      <category term="command" scheme="https://laneypeng.github.io/tags/command/"/>
     
   </entry>
   

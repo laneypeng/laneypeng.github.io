@@ -1,318 +1,51 @@
-<!DOCTYPE html>
-<html lang="zh-Hans">
-<head>
-
-    <!--[if lt IE 9]>
-        <style>body {display: none; background: none !important} </style>
-        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
-    <![endif]-->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<meta name="format-detection" content="telephone=no" />
-<meta name="author" content="PengLi" />
-
-
-
-<meta name="description" content="LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。　　这">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Map LinkedHashMap">
-<meta property="og:url" content="https://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/index.html">
-<meta property="og:site_name" content="拾光">
-<meta property="og:description" content="LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。　　这">
-<meta property="og:image" content="https://laneypeng.github.io/img/linkedhashmap-add.jpg">
-<meta property="og:updated_time" content="2016-06-10T05:09:23.299Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Map LinkedHashMap">
-<meta name="twitter:description" content="LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。　　这">
-<meta name="twitter:image" content="https://laneypeng.github.io/img/linkedhashmap-add.jpg">
-
-<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
-
-
-    <link rel="alternative" href="/atom.xml" title="拾光" type="application/atom+xml">
-
-
-
-    <link rel="shortcut icon" href="/favicon.ico">
-
-
-
-    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
-
-
-
-    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
-
-
-
-    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
-    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="/css/style.css">
-
-
-
-<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
-
-
-<title>Map LinkedHashMap | 拾光</title>
-
-<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
-
-<script>
-    var yiliaConfig = {
-        fancybox: true,
-        animate: true,
-        isHome: false,
-        isPost: true,
-        isArchive: false,
-        isTag: false,
-        isCategory: false,
-        open_in_new: false,
-        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
-        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: true
-    }
-</script>
-
-
-    <script> yiliaConfig.jquery_ui = [false]; </script>
-
-
-
-    <script> yiliaConfig.rootUrl = "\/";</script>
-
-
-
-
-
-
-</head>
-<body>
-  <div id="container">
-    <div class="left-col">
-    <div class="overlay"></div>
-<div class="intrude-less">
-    <header id="header" class="inner">
-        <a href="/" class="profilepic">
-            <img src="/img/avatar.png" class="animated zoomIn">
-        </a>
-        <hgroup>
-          <h1 class="header-author"><a href="/">PengLi</a></h1>
-        </hgroup>
-
-        
-        <p class="header-subtitle">勿&amp;忘</p>
-        
-
-        
-            <form id="search-form">
-            <input type="text" id="local-search-input" name="q" results="0" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
-            <i class="fa fa-times" onclick="resetSearch()"></i>
-            </form>
-            <div id="local-search-result"></div>
-            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
-        
-
-
-        
-            <div id="switch-btn" class="switch-btn">
-                <div class="icon">
-                    <div class="icon-ctn">
-                        <div class="icon-wrap icon-house" data-idx="0">
-                            <div class="birdhouse"></div>
-                            <div class="birdhouse_holes"></div>
-                        </div>
-                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
-                            <div class="ribbon"></div>
-                        </div>
-                        
-                        <div class="icon-wrap icon-link hide" data-idx="2">
-                            <div class="loopback_l"></div>
-                            <div class="loopback_r"></div>
-                        </div>
-                        
-                        
-                        <div class="icon-wrap icon-me hide" data-idx="3">
-                            <div class="user"></div>
-                            <div class="shoulder"></div>
-                        </div>
-                        
-                    </div>
-                    
-                </div>
-                <div class="tips-box hide">
-                    <div class="tips-arrow"></div>
-                    <ul class="tips-inner">
-                        <li>菜单</li>
-                        <li>标签</li>
-                        
-                        <li>友情链接</li>
-                        
-                        
-                        <li>关于我</li>
-                        
-                    </ul>
-                </div>
-            </div>
-        
-
-        <div id="switch-area" class="switch-area">
-            <div class="switch-wrap">
-                <section class="switch-part switch-part1">
-                    <nav class="header-menu">
-                        <ul>
-                        
-                            <li><a href="/">主页</a></li>
-                        
-                            <li><a href="/archives/">所有文章</a></li>
-                        
-                            <li><a href="/tags/">标签云</a></li>
-                        
-                            <li><a href="/about/">关于我</a></li>
-                        
-                        </ul>
-                    </nav>
-                    <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-                    </nav>
-                </section>
-                
-                
-                <section class="switch-part switch-part2">
-                    <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/command/">command</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hive/">hive</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/kafka/">kafka</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/map/">map</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/spark/">spark</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/storm/">storm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/可靠性/">可靠性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/架构/">架构</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/流式处理/">流式处理</a></li></ul>
-                    </div>
-                </section>
-                
-                
-                
-                <section class="switch-part switch-part3">
-                    <div id="js-friends">
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
-                    
-                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
-                    
-                    </div>
-                </section>
-                
-
-                
-                
-                <section class="switch-part switch-part4">
-                
-                    <div id="js-aboutme">专注于大数据</div>
-                </section>
-                
-            </div>
-        </div>
-    </header>                
-</div>
-    </div>
-    <div class="mid-col">
-      <nav id="mobile-nav">
-      <div class="overlay">
-          <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">PengLi</a></h1>
-      </div>
-    <div class="intrude-less">
-        <header id="header" class="inner">
-            <a href="/" class="profilepic">
-                <img src="/img/avatar.png" class="animated zoomIn">
-            </a>
-            <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">PengLi</a></h1>
-            </hgroup>
-            
-            <p class="header-subtitle">勿&amp;忘</p>
-            
-            <nav class="header-menu">
-                <ul>
-                
-                    <li><a href="/">主页</a></li>
-                
-                    <li><a href="/archives/">所有文章</a></li>
-                
-                    <li><a href="/tags/">标签云</a></li>
-                
-                    <li><a href="/about/">关于我</a></li>
-                
-                <div class="clearfix"></div>
-                </ul>
-            </nav>
-            <nav class="header-nav">
-                        <ul class="social">
-                            
-                                <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
-                            
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
-                            
-                                <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
-                            
-                        </ul>
-            </nav>
-        </header>                
-    </div>
-    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
-</nav>
-      <div class="body-wrap"><article id="post-Map中LinkedHashMap简介" class="article article-type-post" itemscope itemprop="blogPost">
+<?xml version="1.0" encoding="utf-8"?>
+<search>
   
-    <div class="article-meta">
-      <a href="/2016/06/07/Map中LinkedHashMap简介/" class="article-date">
-      <time datetime="2016-06-07T03:32:54.000Z" itemprop="datePublished">2016-06-07</time>
-</a>
-    </div>
   
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
+    <entry>
+      <title><![CDATA[SparkSQL转CSV为parquet文件]]></title>
+      <url>https://laneypeng.github.io/2016/06/08/SparkSQL%E5%B0%86CSV%E8%BD%AC%E4%B8%BAparquet%E6%96%87%E4%BB%B6/</url>
+      <content type="html"></content>
+    </entry>
     
+    <entry>
+      <title><![CDATA[Spark架构基础]]></title>
+      <url>https://laneypeng.github.io/2016/06/08/Spark%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/</url>
+      <content type="html"></content>
+    </entry>
     
-      <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      Map LinkedHashMap
-    </h1>
-  
-
-      </header>
-      
-      <div class="article-info article-info-post">
-        
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Java/">Java</a>
-    </div>
-
-
-        
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/map/">map</a></li></ul>
-    </div>
-
-        <div class="clearfix"></div>
-      </div>
-      
+    <entry>
+      <title><![CDATA[Storm可靠性与容错机制]]></title>
+      <url>https://laneypeng.github.io/2016/06/08/Storm%E7%9A%84%E5%8F%AF%E9%9D%A0%E5%AE%B9%E9%94%99%E6%9C%BA%E5%88%B6/</url>
+      <content type="html"></content>
+    </entry>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <p>　　LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。<br>　　这里介绍它的基础、用法实例和LRU缓存实践。<br><a id="more"></a></p>
+    <entry>
+      <title><![CDATA[Storm架构基础]]></title>
+      <url>https://laneypeng.github.io/2016/06/08/Storm%E5%9F%BA%E7%A1%80%E6%9E%B6%E6%9E%84/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Kafka命令行使用]]></title>
+      <url>https://laneypeng.github.io/2016/06/08/Kafka%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h3 id="创建Topic"><a href="#创建Topic" class="headerlink" title="创建Topic"></a>创建Topic</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --create --topic <span class="built_in">test</span> --replication-factor 1 --partitions 4 </span><br><span class="line">  --zookeeper dpnode03:2181,dpnode04:2181,dpnode05:2181</span><br></pre></td></tr></table></figure>
+<p>这里创建了一个test消息队列，副本为2，分区为4。</p>
+<h3 id="查看Topic属性"><a href="#查看Topic属性" class="headerlink" title="查看Topic属性"></a>查看Topic属性</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --zookeeper dpnode03:2181,dpnode04,dpnode05 --describe --topic <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p><img src="/img/kafka-topic-describe.jpg" alt=""><br>Topic：消息名称<br>Partition：分区号。下标从0开始。<br>Leader：所在分区的broker编号，负责处理消息的读写。leader是从所有节点中随机选择的。<br>Replicas：列出了所有的副本节点，不管节点是否在服务中。<br>Isr：正在服务中的节点。</p>
+<h3 id="发送消息"><a href="#发送消息" class="headerlink" title="发送消息"></a>发送消息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-producer.sh --broker-list dpnode05:6667 --topic <span class="built_in">test</span></span><br><span class="line">This is the first message</span><br></pre></td></tr></table></figure>
+<p>输入一行内容按回车</p>
+<h3 id="消费消息"><a href="#消费消息" class="headerlink" title="消费消息"></a>消费消息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-console-consumer.sh --zookeeper dpnode03,dpnode04,dpnode05:2181 --topic <span class="built_in">test</span></span><br><span class="line">  --from-beginning</span><br></pre></td></tr></table></figure>
+<h3 id="列举所有Topic"><a href="#列举所有Topic" class="headerlink" title="列举所有Topic"></a>列举所有Topic</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ bin/kafka-topics.sh --zookeeper dpnode03:2181,dpnode04:2181,dpnode05 --list</span><br></pre></td></tr></table></figure>
+<h3 id="删除Topic"><a href="#删除Topic" class="headerlink" title="删除Topic"></a>删除Topic</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$</span><br></pre></td></tr></table></figure>]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Map LinkedHashMap]]></title>
+      <url>https://laneypeng.github.io/2016/06/07/Map%E4%B8%ADLinkedHashMap%E7%AE%80%E4%BB%8B/</url>
+      <content type="html"><![CDATA[<p>　　LinkedHashMap继承了HashMap、实现了Map接口，是hash表和链表的双重结合。它的底层实现是Map，采用的hash算法和HashMap相同，但是它重新定义了数组中保存的元素Entry，该Entry除了保存当前对象的引用外，还保存了其上一个元素before和下一个元素after的引用，从而在哈希表的基础上又构成了双向链接列表，此链表定义了迭代顺序，包括插入顺序和访问顺序。<br>　　这里介绍它的基础、用法实例和LRU缓存实践。<br><a id="more"></a></p>
 <h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><h3 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h3><p>　　LinkedHashMap有五种构造方式：</p>
 <blockquote>
 <p>1.　<strong>new LinkedHashMap();</strong><br>2.　<strong>new LinkedHashMap(int initialCapacity);</strong>　☆<br>3.　<strong>new LinkedHashMap(int initialCapacity, float loadFactor);</strong><br>4.　<strong>new LinkedHashMap(int initialCapacity, float loadFactor, boolean accessOrder);</strong>　☆<br>5.　<strong>new LinkedHashMap(Map&lt;? extends K, ? extends V&gt; m);</strong></p>
@@ -345,190 +78,15 @@
 <p>111 : 1<br>222 : 2<br>333 : 3<br>444 : 4<br>555 : 5<br><em>========================</em><br>222 : 2<br>333 : 3<br>444 : 4<br>555 : 5<br>666 : 6<br><em>========================</em><br>222 : 2<br>444 : 4<br>555 : 5<br>666 : 6<br>333 : 3</p>
 </blockquote>
 <p>第一次向缓存中添加5个元素，已经达到缓存的最大空间。第二次再添加了一个元素<code>&quot;666&quot;,6</code>，缓存删掉了链表头部的<code>&quot;111&quot;,1</code>。第三次通过<code>get(&quot;333&quot;)</code>访问元素，缓存将其移动到链表末尾。这就是LRU的<code>最近最少使用</code>体现。</p>
-
-      
-    </div>
+]]></content>
+    </entry>
     
-  </div>
+    <entry>
+      <title><![CDATA[Hive命令行使用]]></title>
+      <url>https://laneypeng.github.io/2016/04/29/Hive%E5%91%BD%E4%BB%A4%E8%A1%8C%E4%BD%BF%E7%94%A8/</url>
+      <content type="html"><![CDATA[<h1 id="一级标题"><a href="#一级标题" class="headerlink" title="一级标题"></a>一级标题</h1><h2 id="二级标题"><a href="#二级标题" class="headerlink" title="二级标题"></a>二级标题</h2><h3 id="三级标题一"><a href="#三级标题一" class="headerlink" title="三级标题一"></a>三级标题一</h3><h3 id="三级标题二"><a href="#三级标题二" class="headerlink" title="三级标题二"></a>三级标题二</h3><h3 id="三级标题三"><a href="#三级标题三" class="headerlink" title="三级标题三"></a>三级标题三</h3><h2 id="二级标题二"><a href="#二级标题二" class="headerlink" title="二级标题二"></a>二级标题二</h2><h3 id="三级标题三-1"><a href="#三级标题三-1" class="headerlink" title="三级标题三"></a>三级标题三</h3><h3 id="三级标题四"><a href="#三级标题四" class="headerlink" title="三级标题四"></a>三级标题四</h3><h1 id="一级标题二"><a href="#一级标题二" class="headerlink" title="一级标题二"></a>一级标题二</h1>]]></content>
+    </entry>
+    
   
-    
-    <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/06/07/Map中LinkedHashMap简介/">Map LinkedHashMap</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">PengLi</a></p>
-        <p><span>发布时间:</span>2016-06-07, 11:32:54</p>
-        <p><span>最后更新:</span>2016-06-10, 13:09:23</p>
-        <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/06/07/Map中LinkedHashMap简介/" title="Map LinkedHashMap">https://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/</a>
-            <span class="copy-path" data-clipboard-text="原文: https://laneypeng.github.io/2016/06/07/Map中LinkedHashMap简介/　　作者: PengLi" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
-            <script> var clipboard = new Clipboard('.copy-path'); </script>
-        </p>
-        <p>
-            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
-        </p>
-    </div>
-
-
-
-    <nav id="article-nav">
-        
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/08/Kafka命令行使用/">
-                    Kafka命令行使用
-                </a>
-            </div>
-        
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/04/29/Hive命令行使用/">
-                    Hive命令行使用
-                </a>
-            </div>
-        
-    </nav>
-
   
-</article>
-
-    <div id="toc" class="toc-article">
-    <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基础"><span class="toc-number">1.</span> <span class="toc-text">基础</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#构造"><span class="toc-number">1.1.</span> <span class="toc-text">构造</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Entry元素"><span class="toc-number">1.2.</span> <span class="toc-text">Entry元素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#put写操作"><span class="toc-number">1.3.</span> <span class="toc-text">put写操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#get读操作"><span class="toc-number">1.4.</span> <span class="toc-text">get读操作</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Demo实例"><span class="toc-number">2.</span> <span class="toc-text">Demo实例</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#默认按插入顺序进行迭代"><span class="toc-number">2.1.</span> <span class="toc-text">默认按插入顺序进行迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#定义按访问顺序迭代"><span class="toc-number">2.2.</span> <span class="toc-text">定义按访问顺序迭代</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用LinkedHashMap构建线程安全的LRU缓存"><span class="toc-number">3.</span> <span class="toc-text">使用LinkedHashMap构建线程安全的LRU缓存</span></a></li></ol>
-</div>
-<style>
-    .left-col .switch-btn,
-    .left-col .switch-area {
-        display: none;
-    }
-</style>
-
-<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
-
-<script>
-    yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
-</script>
-
-
-
-    
-<div class="share">
-    
-        <div class="bdsharebuttonbox">
-            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
-            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
-            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
-            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
-            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
-            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
-        </div>
-        <script>
-            window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Map LinkedHashMap　| 拾光　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
-        </script>
-    
-
-    
-</div>
-
-
-
-
-
-
-
-    
-
-
-
-
-    <div class="scroll" id="post-nav-button">
-        
-            <a href="/2016/06/08/Kafka命令行使用/" title="上一篇: Kafka命令行使用">
-                <i class="fa fa-angle-left"></i>
-            </a>
-        
-
-        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
-
-        
-            <a href="/2016/04/29/Hive命令行使用/" title="下一篇: Hive命令行使用">
-                <i class="fa fa-angle-right"></i>
-            </a>
-        
-    </div>
-
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/SparkSQL将CSV转为parquet文件/">SparkSQL转CSV为parquet文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Spark基础架构/">Spark架构基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Storm的可靠容错机制/">Storm可靠性与容错机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Storm基础架构/">Storm架构基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/08/Kafka命令行使用/">Kafka命令行使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/07/Map中LinkedHashMap简介/">Map LinkedHashMap</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/29/Hive命令行使用/">Hive命令行使用</a></li></ul>
-
-
-
-
-    <script>
-        
-    </script>
-</div>
-      <footer id="footer">
-    <div class="outer">
-        <div id="footer-info">
-            <div class="footer-left">
-                <i class="fa fa-copyright"></i> 
-                2016 PengLi
-            </div>
-            <div class="footer-right">
-                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.0">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
-            </div>
-        </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >本站到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
-        
-    </div>
-</footer>
-    </div>
-    
-<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            var iPad = window.navigator.userAgent.indexOf('iPad');
-            if (iPad > -1 || $(".left-col").css("display") === "none") {
-                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
-                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
-                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
-            }
-            else {
-                var backgroundnum = 5;
-                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
-                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
-            }
-        })
-    </script>
-
-
-
-
-<div class="scroll" id="scroll">
-    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
-    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
-    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
-</div>
-<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
-  </div>
-</body>
-</html>
+</search>
